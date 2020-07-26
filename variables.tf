@@ -14,20 +14,24 @@
 
 variable "name" {
   description = "Name of the workspace"
+  type        = string
 }
 
 variable "organization" {
   description = "Name of the organization."
+  type        = string
 }
 
 variable "auto_apply" {
   description = "Whether to automatically apply changes when a Terraform plan is successful."
   default     = false
+  type        = bool
 }
 
 variable "file_triggers_enabled" {
   description = "Whether to filter runs based on the changed files in a VCS push. If enabled, the working directory and trigger prefixes describe a set of paths which must contain changes for a VCS push to trigger a run. If disabled, any push will trigger a run."
   default     = true
+  type        = bool
 }
 
 variable "notifications" {
@@ -40,11 +44,13 @@ variable "notifications" {
 variable "queue_all_runs" {
   description = "Whether all runs should be queued. When set to false, runs triggered by a VCS change will not be queued until at least one run is manually queued."
   default     = true
+  type        = bool
 }
 
 variable "ssh_key_id" {
   description = "The ID of an SSH key to assign to the workspace."
   default     = null
+  type        = string
 }
 
 variable "team_access" {
@@ -57,6 +63,7 @@ variable "team_access" {
 variable "terraform_version" {
   description = "The version of Terraform to use for this workspace."
   default     = null
+  type        = string
 }
 
 variable "trigger_prefixes" {
@@ -82,4 +89,5 @@ variable "vcs_repo" {
 variable "working_directory" {
   description = "A relative path that Terraform will execute within. Defaults to the root of your repository."
   default     = null
+  type        = string
 }
