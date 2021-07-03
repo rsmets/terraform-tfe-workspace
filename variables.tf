@@ -95,11 +95,17 @@ variable "working_directory" {
 variable "global_remote_state" {
   description = "Whether the workspace allows all workspaces in the organization to access its state data during runs. If false, then only specifically approved workspaces can access its state (remote_state_consumer_ids)."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "remote_state_consumer_ids" {
   description = "The set of workspace IDs set as explicit remote state consumers for the given workspace."
   type        = list(string)
   default     = []
+}
+
+variable "execution_mode" {
+  description = "Which execution mode to use. Using Terraform Cloud, valid values are remote, local or agent. Using Terraform Enterprise, only remote and local execution modes are valid. When set to local, the workspace will be used for state storage only."
+  type        = string
+  default     = "remote"
 }

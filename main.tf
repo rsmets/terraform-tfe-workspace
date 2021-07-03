@@ -22,8 +22,11 @@ resource "tfe_workspace" "managed" {
   ssh_key_id                = var.ssh_key_id
   terraform_version         = var.terraform_version
   trigger_prefixes          = var.trigger_prefixes
+
+  # Optional
   global_remote_state       = var.global_remote_state
   remote_state_consumer_ids = var.remote_state_consumer_ids
+  execution_mode            = var.execution_mode
 
   dynamic "vcs_repo" {
     for_each = lookup(var.vcs_repo, "identifier", "void") == "void" ? [] : [var.vcs_repo]
