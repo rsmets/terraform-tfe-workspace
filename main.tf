@@ -53,7 +53,7 @@ resource "tfe_notification_configuration" "managed" {
   token            = lookup(each.value.configuration, "token", null)
   triggers         = each.value.triggers
   url              = each.value.configuration["url"]
-  workspace_id     = tfe_workspace.managed.external_id
+  workspace_id     = tfe_workspace.managed.id
 }
 
 resource "tfe_variable" "environment" {
