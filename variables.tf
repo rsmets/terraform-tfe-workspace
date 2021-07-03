@@ -69,7 +69,7 @@ variable "terraform_version" {
 variable "trigger_prefixes" {
   description = "List of repository-root-relative paths which describe all locations to be tracked for changes. workspace. Defaults to the latest available version."
   default     = null
-  type        = list
+  type        = list(any)
 }
 
 variable "variables" {
@@ -90,4 +90,16 @@ variable "working_directory" {
   description = "A relative path that Terraform will execute within. Defaults to the root of your repository."
   default     = null
   type        = string
+}
+
+variable "global_remote_state" {
+  description = "Whether the workspace allows all workspaces in the organization to access its state data during runs. If false, then only specifically approved workspaces can access its state (remote_state_consumer_ids)."
+  type        = bool
+  default     = false
+}
+
+variable "remote_state_consumer_ids" {
+  description = "The set of workspace IDs set as explicit remote state consumers for the given workspace."
+  type        = list(string)
+  default     = []
 }
